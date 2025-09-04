@@ -1,0 +1,60 @@
+/*
+  Use these utility classes on elements you want to animate on screen entry.
+  You might need a library like 'react-intersection-observer' to trigger them on scroll.
+*/
+.fade-in-up {
+  /*
+    The 'animation-fill-mode' is set to 'backwards' to ensure the element
+    starts in its 'from' state (invisible) before the animation begins.
+  */
+  animation: fadeInUp 0.8s ease-out backwards;
+}import React from 'react';
+import Header from '../../components/Header/Header';
+import Services from '../../components/Services/Services';
+import Footer from '../../components/Footer/Footer';
+import './HomePage.css';
+import '../../animations.css'; // Import the animations
+
+const HomePage = () => {
+  return (
+    <div className="home-page">
+      {/* Add animation class to components */}
+      <div className="fade-in-up">
+        <Header />
+      </div>
+      <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <Services />
+      </div>
+      <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
+import React from 'react';
+import Header from '../../components/Header/Header';
+import Services from '../../components/Services/Services';
+import Footer from '../../components/Footer/Footer';
+import './HomePage.css';
+import '../../animations.css'; // Import the animations
+
+const HomePage = () => {
+  return (
+    <div className="home-page">
+      {/* Add animation class to components */}
+      <div className="fade-in-up">
+        <Header />
+      </div>
+      <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <Services />
+      </div>
+      <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;

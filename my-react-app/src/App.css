@@ -1,0 +1,20 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.App {
+  /* You can add global app styles here if needed */
+  overflow-x: hidden; /* Prevents horizontal scroll from animations */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
