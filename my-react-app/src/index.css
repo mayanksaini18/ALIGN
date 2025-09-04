@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-  --primary-color: #0a0a0a;
-  --secondary-color: #6c6c6c;
-  --background-color: #ffffff;
-  --accent-color: #1a73e8;
-  --surface-color: #f8f9fa;
+  --primary-color: #ffffff;      /* White text */
+  --secondary-color: #b3b3b3;    /* Light gray text */
+  --background-color: #000000;   /* Black background */
+  --surface-color: #1c1c1c;      /* Dark gray for cards/surfaces */
+  --accent-color: #ffffff;       /* White for accents */
+  --border-color: #333333;       /* Dark gray for borders */
   --border-radius: 8px;
-  --transition-speed: 0.3s;
+  --transition-speed: 0.4s;
 }
 
 *, *::before, *::after {
@@ -22,6 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color);
   color: var(--primary-color);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 code {

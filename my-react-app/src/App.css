@@ -1,10 +1,12 @@
 html {
   scroll-behavior: smooth;
 }
-
 .App {
   /* You can add global app styles here if needed */
   overflow-x: hidden; /* Prevents horizontal scroll from animations */
+  background: linear-gradient(-45deg, #000, #1c1c1c, #000, #333);
+  background-size: 400% 400%;
+  animation: animate-gradient-background 15s ease infinite;
 }
 
 @keyframes fadeInUp {
@@ -17,4 +19,20 @@ html {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes animate-gradient-background {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
