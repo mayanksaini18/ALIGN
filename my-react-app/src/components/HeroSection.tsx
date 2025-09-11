@@ -29,11 +29,11 @@ const HeroSection = () => {
           </span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
           We create powerful brand identities, strategic marketing campaigns, and cutting-edge digital experiences that drive results.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{animationDelay: '0.4s'}}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in [animation-delay:400ms]">
           <Button variant="hero" size="lg" className="text-lg px-8 py-6 hover-scale">
             Start Your Project
           </Button>

@@ -45,13 +45,15 @@ const ServicesSection = () => {
         
         <div 
           ref={gridRef}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-on-scroll ${gridVisible ? 'visible' : ''}`}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {services.map((service, index) => (
             <Card 
-              key={index} 
-              className="bg-gradient-card border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-card hover-scale group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={service.title} 
+              className={`bg-gradient-card border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-card hover-scale group ${
+                gridVisible ? 'animate-fade-in' : 'opacity-0'
+              }`}
+              style={{ animationDelay: gridVisible ? `${index * 100}ms` : undefined }}
             >
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">

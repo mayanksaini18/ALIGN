@@ -1,3 +1,25 @@
+import { Mail, Phone, Briefcase } from "lucide-react";
+
+const serviceLinks = [
+  { href: "#services", text: "Brand Strategy" },
+  { href: "#services", text: "Digital Marketing" },
+  { href: "#services", text: "Web Development" },
+  { href: "#services", text: "Creative Design" },
+];
+
+const companyLinks = [
+  { href: "#about", text: "About Us" },
+  { href: "#team", text: "Our Team" },
+  { href: "#careers", text: "Careers" },
+  { href: "#contact", text: "Contact" },
+];
+
+const socialLinks = [
+  { href: "mailto:hello@align.agency", label: "Email", icon: <Mail className="w-5 h-5" /> },
+  { href: "tel:+1234567890", label: "Phone", icon: <Phone className="w-5 h-5" /> },
+  { href: "#", label: "LinkedIn", icon: <Briefcase className="w-5 h-5" /> },
+];
+
 const Footer = () => {
   return (
     <footer id="contact" className="bg-muted/10 border-t border-border/20 py-12 px-6">
@@ -11,41 +33,48 @@ const Footer = () => {
               Transforming brands through strategic design, innovative marketing, and cutting-edge development.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-smooth">
-                📧
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-smooth">
-                📱
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-smooth">
-                💼
-              </a>
+              {socialLinks.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href} 
+                  aria-label={link.label}
+                  className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-smooth"
+                >
+                  {link.icon}
+                </a>
+              ))}
             </div>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-smooth">Brand Strategy</a></li>
-              <li><a href="#" className="hover:text-foreground transition-smooth">Digital Marketing</a></li>
-              <li><a href="#" className="hover:text-foreground transition-smooth">Web Development</a></li>
-              <li><a href="#" className="hover:text-foreground transition-smooth">Creative Design</a></li>
+              {serviceLinks.map((link) => (
+                <li key={link.text}>
+                  <a href={link.href} className="hover:text-foreground transition-smooth">
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-smooth">About Us</a></li>
-              <li><a href="#" className="hover:text-foreground transition-smooth">Our Team</a></li>
-              <li><a href="#" className="hover:text-foreground transition-smooth">Careers</a></li>
-              <li><a href="#" className="hover:text-foreground transition-smooth">Contact</a></li>
+              {companyLinks.map((link) => (
+                <li key={link.text}>
+                  <a href={link.href} className="hover:text-foreground transition-smooth">
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         
         <div className="border-t border-border/20 mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 A.L.I.G.N Agency. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} A.L.I.G.N Agency. All rights reserved.</p>
         </div>
       </div>
     </footer>
