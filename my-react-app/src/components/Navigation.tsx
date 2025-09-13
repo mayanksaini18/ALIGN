@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import clsx from "clsx";
 
 const navLinks = [
   { href: "#services", text: "Services" },
@@ -10,31 +9,15 @@ const navLinks = [
 ];
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className={clsx(
-      "fixed top-0 w-full z-50 transition-all duration-300",
-      {
-        'bg-background/95 backdrop-blur-md border-b border-border/20 shadow-lg': isScrolled || isMenuOpen,
-        'bg-transparent': !isScrolled && !isMenuOpen
-      }
-    )}>
+    <header className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border/20 shadow-lg">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
+          <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
             A.L.I.G.N
           </div>
           

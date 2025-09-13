@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
   {
@@ -25,16 +24,10 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const [titleRef, titleVisible] = useScrollAnimation(0.1);
-  const [gridRef, gridVisible] = useScrollAnimation(0.1);
-
   return (
     <section id="services" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div 
-          ref={titleRef} 
-          className={`text-center mb-16 animate-on-scroll ${titleVisible ? 'visible' : ''}`}
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Our <span className="bg-gradient-primary bg-clip-text text-transparent">Services</span>
           </h2>
@@ -43,17 +36,11 @@ const ServicesSection = () => {
           </p>
         </div>
         
-        <div 
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <Card 
               key={service.title} 
-              className={`bg-gradient-card border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-card hover-scale group ${
-                gridVisible ? 'animate-fade-in' : 'opacity-0'
-              }`}
-              style={{ animationDelay: gridVisible ? `${index * 100}ms` : undefined }}
+              className="bg-gradient-card border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-card hover-scale group"
             >
               <CardContent className="p-8 text-center">
                 <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
