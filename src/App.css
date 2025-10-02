@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
-root{
-    background-color: #414141;
-}
+/* Base styles - Tailwind handles most of this, but setting body defaults is good practice */
 body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Ensure the body is black right away */
     background-color: #000000;
 }
+/* If you use any global Tailwind directives, place them here. */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
