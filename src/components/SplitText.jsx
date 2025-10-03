@@ -1,27 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 const SplitText = ({ text }) => {
-    const containerRef = useRef(null);
+    const charsRef = useRef([]);
 
     useEffect(() => {
-        if (containerRef.current && window.gsap) {
-            const chars = containerRef.current.children;
-            window.gsap.from(chars, {
-                y: 100,
+        if (window.gsap) { // Use window.gsap directly
+            window.gsap.from(charsRef.current, {
+                y: 20,
                 opacity: 0,
-                stagger: 0.1,
-                duration: 1,
-                ease: 'power3.out',
+                duration: 0.8,
+                stagger: 0.05,
+                ease: "power3.out"
             });
         }
-    }, []);
+    }, [text]);
 
     return (
-        <h1 ref={containerRef} className="text-8xl md:text-9xl font-serif font-black tracking-widest text-white" aria-label={text}>
+        <div className="flex justify-center flex-wrap">
             {text.split('').map((char, index) => (
-                <span key={index} className="inline-block" style={{ color: char === 'A' ? '#FFC300' : 'white' }} aria-hidden="true">{char}</span>
+                <span
+                    key={index}
+                    ref={el => charsRef.current[index] = el}
+                    // Massive text size for the hero section, now using font-serif
+                    className="inline-block text-white text-7xl md:text-8xl lg:text-[10rem] font-serif font-black tracking-tighter leading-none"
+                >
+                    {char === ' ' ? '\u00A0' : char}
+                </span>
             ))}
-        </h1>
+        </div>
     );
 };
 
