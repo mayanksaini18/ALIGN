@@ -1,6 +1,7 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useState, useEffect, useRef } from 'react';
 
-const TextType = ({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = true, cursorCharacter = '|', deletingSpeed = 30 }) => {
+// --- TextType Component (Standard Function Declaration) ---
+function TextType({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = true, cursorCharacter = '|', deletingSpeed = 30 }) {
     const textRef = useRef(null);
     const cursorRef = useRef(null);
     const [currentText, setCurrentText] = useState('');
@@ -63,6 +64,6 @@ const TextType = ({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = t
             )}
         </span>
     );
-};
+}
 
 export default TextType;
