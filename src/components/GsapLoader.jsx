@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from 'react';
 
-const GsapLoader = ({ children }) => {
-    const [gsapLoaded, setGsapLoaded] = useState(false);
+// --- GsapLoader Component (Standard Function Declaration) ---
+function GsapLoader({ children }) {
+    const [isGsapLoaded, setIsGsapLoaded] = useState(false);
 
     useEffect(() => {
-        // Check if GSAP is already available
-        if (window.gsap) {
-            setGsapLoaded(true);
-            return;
+        // Only load if GSAP is not yet available globally
+        if (!window.gsap) {
+            const script = document.createElement('script');
+            // Using a reliable CDN link for GSAP
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js";
+            script.onload = () => {
+                // GSAP is loaded and attached to window.gsap
+                setIsGsapLoaded(true);
+            };
+            document.body.appendChild(script);
+            return () => {
+                document.body.removeChild(script);
+            };
+        } else {
+            // GSAP is already available
+            setIsGsapLoaded(true);
         }
-
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
-        script.async = true;
-        script.onload = () => {
-            setGsapLoaded(true);
-        };
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script);
-        };
     }, []);
 
-    return gsapLoaded ? <>{children}</> : null; // Or a loading spinner
-};
+    if (!isGsapLoaded) {
+        // Display a simple loading state while GSAP fetches
+        return <div className="text-gray-400 p-8 text-center bg-black min-h-screen">Loading ALIGN experience...</div>;
+    }
+
+    // Render children once GSAP is ready
+    return <>{children}</>;
+}
 
 export default GsapLoader;
