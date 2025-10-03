@@ -1,11 +1,11 @@
 import React from 'react';
 
 // --- ServiceCard Component (Helper) ---
-// Defined here because it's only used by Body.jsx
+// The icon prop now expects an SVG JSX element
 function ServiceCard({ title, icon, description }) {
     return (
-        // Service cards now use the 'deep-panel' background
         <div className="p-8 bg-deep-panel rounded-xl shadow-2xl space-y-4 border border-gray-800 transition duration-300 hover:border-align-gold">
+            {/* Render the SVG icon directly */}
             <div className="text-5xl mb-4 transition duration-300 text-align-gold">{icon}</div>
             <h3 className="text-2xl font-semibold text-white">{title}</h3>
             <p className="text-gray-400">{description}</p>
@@ -18,36 +18,30 @@ function ServiceCard({ title, icon, description }) {
 }
 
 // --- Contact Section (Helper) ---
-// Defined here because it's only used by Body.jsx
 function ContactSection() {
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/vxkgbyea"; // <-- FIXED ENDPOINT
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/vxkgbyea";
 
     return (
-        // Contact section background is now pure 'bg-black'
         <section id="contact" className="max-w-3xl mx-auto mt-24 py-16 bg-black text-white rounded-lg">
             <div className="text-center mb-10">
                 <h2 className="text-5xl font-extrabold mb-4">Start Your Project</h2>
                 <p className="text-lg text-gray-400">Have an idea? Let's make it a reality. Fill out the form below to get a quote for your project.</p>
             </div>
 
-            {/* Formspree configuration applied here */}
             <form action={FORMSPREE_ENDPOINT} method="POST" className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                     <div>
                         <label htmlFor="full-name" className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                        {/* Added name="name" */}
                         <input type="text" id="full-name" name="name" placeholder="Enter your full name" className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300" required />
                     </div>
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                        {/* Added name="_replyto" for Formspree replies */}
                         <input type="email" id="email" name="_replyto" placeholder="Enter your email address" className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300" required />
                     </div>
                 </div>
 
                 <div>
                     <label htmlFor="project-details" className="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
-                    {/* Added name="message" */}
                     <textarea id="project-details" name="message" rows="5" placeholder="Tell us about your project, goals, and timeline..." className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300 resize-y" required></textarea>
                 </div>
 
@@ -67,6 +61,31 @@ function ContactSection() {
 
 // --- Body Component (Standard Function Declaration) ---
 function Body({ className }) {
+
+    // SVG ICON COMPONENT DEFINITIONS
+    const WebIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 0 0 9.8 8.6c.3 1.1-.1 2.3-.9 3.1L12 21.8l-7-7.1c-.8-.8-1.2-2-.9-3.1A10 10 0 0 0 12 2Z"/><path d="M5 13.5c.3 1.1.8 2.3 1.7 3.1L12 21.8l5.3-5.2c.8-.8 1.3-2 1.7-3.1"/><path d="M12 2v10m-3-3h6"/></svg>;
+    const SearchIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><path d="M10 5l4 4m0-4l-4 4"></path></svg>;
+    const TargetIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>;
+    const PhoneIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12" y2="18"></line></svg>;
+    const BoltIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>;
+    const BrushIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12.5 7.5l-3 3M18 13l-4-4m-3-3l-4-4m15 15l-4-4m-3-3l-4-4m-4 15l-4-4m21 0l-4 4M7 21l-3-3m15-6l-3-3M3 3l18 18"></path></svg>;
+    const VideoIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 10l4 4-4 4"></path><path d="M4 4h7a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H4z"></path></svg>;
+    const EditIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>;
+    const ChartIcon = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8l-6.2 6.2-2.5-2.5-5 5"></path></svg>;
+
+    // Updated Services List with SVG Icons
+    const digitalServices = [
+        { title: "Custom Web Development", icon: WebIcon, description: "Building high-performance, fully custom websites (React, Next.js) tailored to your business needs." },
+        { title: "SEO Strategy & Execution", icon: SearchIcon, description: "Driving organic traffic and ranking higher with comprehensive keyword research and on-page optimization." },
+        { title: "Performance Marketing (PPC)", icon: TargetIcon, description: "Optimizing Google Ads and social campaigns to maximize ROI and minimize cost per conversion." },
+        // { title: "Social Media Management", icon: PhoneIcon, description: "Creating, scheduling, and analyzing engaging content across platforms to grow your audience and brand." },
+        { title: "Conversion Rate Optimization", icon: BoltIcon, description: "Analyzing user journeys and site behavior to turn more visitors into customers." },
+        { title: "UI/UX Design & Audit", icon: BrushIcon, description: "Designing intuitive user interfaces and conducting expert reviews to ensure seamless user experience." },
+        // { title: "Motion Graphics & Video", icon: VideoIcon, description: "Producing cinematic, animated video content and engaging motion graphics for all digital channels." },
+        { title: "Brand & Content Strategy", icon: EditIcon, description: "Developing a unified brand voice and content plan that aligns with your market goals." },
+        // { title: "Analytics & Reporting", icon: ChartIcon, description: "Providing clear, actionable data insights and detailed reports to measure success and inform strategy." }
+    ];
+
     return (
         <main className={`py-16 px-6 ${className} bg-black`}>
             <section id="services" className="max-w-7xl mx-auto mt-10">
@@ -75,12 +94,9 @@ function Body({ className }) {
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    <ServiceCard title="Strategic Alignment" icon="🎯" description="We define your core identity and build a scalable marketing framework for sustained growth." />
-                    <ServiceCard title="Content Engineering" icon="✍️" description="Crafting compelling narratives from raw ideas to fully captivating and resonance-driven products." />
-                    <ServiceCard title="Motion & Graphics" icon="🎬" description="Enhancing your story with elegant motion graphics, from subtle titling to complex animated visuals." />
-                    <ServiceCard title="Digital Transformation" icon="⚡" description="Future-proof your business with cutting-edge tools and automated marketing workflows." />
-                    <ServiceCard title="Performance Marketing" icon="📈" description="Optimize every dollar with focused, data-backed campaign execution and measurable KPIs." />
-                    <ServiceCard title="Visual Storytelling" icon="✨" description="Setting the mood and ensuring visual perfection for every client project, delivering cinematic quality." />
+                    {digitalServices.map((service, index) => (
+                        <ServiceCard key={index} {...service} />
+                    ))}
                 </div>
             </section>
 
@@ -98,7 +114,7 @@ function Body({ className }) {
                         <div key={i} className="group aspect-video bg-deep-panel rounded-xl overflow-hidden relative transition-shadow duration-300 shadow-xl hover:shadow-align-gold/50">
                             <img src={`https://placehold.co/600x400/0A0A0A/FFC300?text=Project+${i}`} alt={`Project ${i}`} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500" />
                             <div className="absolute inset-0 flex items-end justify-start p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                <h3 className="text-3xl font-bold text-white group-hover:text-align-gold transition duration-300">Campaign Title {i}</h3>
+                                {/*<h3 className="text-3xl font-bold text-white group-hover:text-align-gold transition duration-300">Campaign Title {i}</h3>*/}
                             </div>
                         </div>
                     ))}
