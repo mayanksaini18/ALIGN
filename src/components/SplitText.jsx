@@ -24,7 +24,7 @@ function SplitText({ text }) {
                     key={index}
                     ref={el => charsRef.current[index] = el}
                     // Massive text size for the hero section, using font-serif
-                    className="inline-block text-white text-7xl md:text-8xl lg:text-[10rem] font-serif font-black tracking-tighter leading-none"
+                    className="inline-block text-white text-7xl md:text-8xl lg:text-[10rem] font-mono font-black tracking-tighter leading-none"
                 >
                     {char === ' ' ? '\u00A0' : char}
                 </span>
