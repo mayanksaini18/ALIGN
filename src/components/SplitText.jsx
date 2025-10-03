@@ -1,10 +1,12 @@
-import { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const SplitText = ({ text }) => {
+// --- SplitText Component (Standard Function Declaration) ---
+function SplitText({ text }) {
     const charsRef = useRef([]);
 
     useEffect(() => {
-        if (window.gsap) { // Use window.gsap directly
+        // Use window.gsap directly after GsapLoader confirms it's ready
+        if (window.gsap) {
             window.gsap.from(charsRef.current, {
                 y: 20,
                 opacity: 0,
@@ -21,7 +23,7 @@ const SplitText = ({ text }) => {
                 <span
                     key={index}
                     ref={el => charsRef.current[index] = el}
-                    // Massive text size for the hero section, now using font-serif
+                    // Massive text size for the hero section, using font-serif
                     className="inline-block text-white text-7xl md:text-8xl lg:text-[10rem] font-serif font-black tracking-tighter leading-none"
                 >
                     {char === ' ' ? '\u00A0' : char}
@@ -29,6 +31,6 @@ const SplitText = ({ text }) => {
             ))}
         </div>
     );
-};
+}
 
 export default SplitText;
