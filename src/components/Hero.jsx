@@ -15,7 +15,7 @@ export default function Hero() {
                     deletingSpeed={40}
                 />
             </div>
-            <a href="#contact" className="px-10 py-4 text-xl font-bold rounded-lg bg-align-gold text-black shadow-2xl hover:bg-white transition duration-300 transform hover:scale-[1.05] mt-8">
+            <a href="#contact" className="px-10 py-4 text-xl font-bold rounded-lg bg-align-gold text-black shadow-2xl hover:bg-white transition duration-300 transform hover:scale-[1.2] mt-8">
                 Start Your Project
             </a>
         </div>
