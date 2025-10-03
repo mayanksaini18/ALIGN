@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // --- ServiceCard Component (Helper) ---
@@ -21,6 +20,8 @@ function ServiceCard({ title, icon, description }) {
 // --- Contact Section (Helper) ---
 // Defined here because it's only used by Body.jsx
 function ContactSection() {
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/vxkgbyea"; // <-- FIXED ENDPOINT
+
     return (
         // Contact section background is now pure 'bg-black'
         <section id="contact" className="max-w-3xl mx-auto mt-24 py-16 bg-black text-white rounded-lg">
@@ -29,21 +30,25 @@ function ContactSection() {
                 <p className="text-lg text-gray-400">Have an idea? Let's make it a reality. Fill out the form below to get a quote for your project.</p>
             </div>
 
-            <form className="space-y-6">
+            {/* Formspree configuration applied here */}
+            <form action={FORMSPREE_ENDPOINT} method="POST" className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                     <div>
                         <label htmlFor="full-name" className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                        <input type="text" id="full-name" placeholder="Enter your full name" className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300" />
+                        {/* Added name="name" */}
+                        <input type="text" id="full-name" name="name" placeholder="Enter your full name" className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300" required />
                     </div>
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email address" className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300" />
+                        {/* Added name="_replyto" for Formspree replies */}
+                        <input type="email" id="email" name="_replyto" placeholder="Enter your email address" className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300" required />
                     </div>
                 </div>
 
                 <div>
                     <label htmlFor="project-details" className="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
-                    <textarea id="project-details" rows="5" placeholder="Tell us about your project, goals, and timeline..." className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300 resize-y"></textarea>
+                    {/* Added name="message" */}
+                    <textarea id="project-details" name="message" rows="5" placeholder="Tell us about your project, goals, and timeline..." className="w-full p-3 bg-gray-800 border-b-2 border-gray-600 focus:border-align-gold text-white rounded-t-md outline-none transition duration-300 resize-y" required></textarea>
                 </div>
 
                 <div className="text-center pt-4">
