@@ -11,7 +11,7 @@ function Header() {
                 </div>
                 <nav className="hidden md:flex space-x-8">
                     {['Services', 'Works', 'About', 'Contact'].map((item) => (
-                        <a key={item} href={`#${item.toLowerCase()}`} className="text-lg font-medium text-gray-400 hover:text-align-gold transition duration-300">
+                        <a key={item} href={`#${item.toLowerCase()}`} className="text-lg font-medium text-white hover:text-align-gold transition duration-300">
                             {item}
                         </a>
                     ))}
