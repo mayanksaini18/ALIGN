@@ -15,7 +15,9 @@ export default {
       fontFamily: {
         'serif': ['"Playfair Display"', 'serif'],
         'sans': ['Inter', 'sans-serif'],
-        'mono': ['"Fira Code"', 'monospace']
+        'mono': ['"Fira Code"', 'monospace'],
+          // "poppins" is the custom name for your utility class
+          poppins: ['Poppins', 'sans-serif']
       }
     },
   },
