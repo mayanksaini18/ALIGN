@@ -18,7 +18,7 @@ function SplitText({ text }) {
     }, [text]);
 
     return (
-        <div className="flex justify-center flex-wrap">
+        <div className="flex justify-center flex-wrap ">
             {text.split('').map((char, index) => (
                 <span
                     key={index}
